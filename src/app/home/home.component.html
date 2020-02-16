@@ -1,0 +1,33 @@
+<div class="form-group">
+    <label for="exampleInputEmail1">ID</label>
+    <input type="text" class="form-control" [(ngModel)]="employee.id" id="exampleInputEmail1"
+        aria-describedby="emailHelp" placeholder="Enter ID">
+</div>
+<div class="form-group">
+    <label for="exampleInputPassword1">Name</label>
+    <input type="text" class="form-control" [(ngModel)]="employee.name" id="exampleInputPassword1" placeholder="Name">
+</div>
+<button type="submit" class="btn btn-primary" (click)="addEmployee(employee)">Submit</button>
+
+
+<div *ngIf="employeeList.length>0;else templateName">
+    <table class="table ">
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+        </tr>
+        <tr *ngFor="let employee of employeeList">
+            <td>
+                {{employee.id}}
+            </td>
+            <td>
+                {{employee.name | uppercase}}
+            </td>
+        </tr>
+    </table>
+</div>
+<ng-template #templateName>
+    <div class="alert alert-success" role="alert">
+        No Data found
+    </div>
+</ng-template>
